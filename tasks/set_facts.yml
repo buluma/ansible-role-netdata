@@ -1,5 +1,5 @@
 ---
-- name: set_facts | Defining Debian Packages
+- name: Set_facts | Defining Debian Packages
   set_fact:
     netdata_debian_pre_reqs:
       - autoconf-archive
@@ -33,7 +33,7 @@
     (ansible_distribution == "Ubuntu" and
     ansible_distribution_version is version('20.04', '<'))
 
-- name: set_facts | Defining Debian Packages
+- name: Set_facts | Defining Debian Packages
   set_fact:
     netdata_debian_pre_reqs:
       - autoconf-archive

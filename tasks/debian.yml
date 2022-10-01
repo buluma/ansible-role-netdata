@@ -1,11 +1,11 @@
 ---
-- name: debian | Installing git
+- name: Debian | Installing git
   apt:
     name: git
     state: present
   become: true
 
-- name: debian | Installing iproute Package
+- name: Debian | Installing iproute Package
   apt:
     name: iproute
     state: present
