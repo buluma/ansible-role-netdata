@@ -6,5 +6,5 @@
     netdata_git_version_tag: v1.35.0
   tasks:
     - name: "Include buluma.netdata"
-      include_role:
+      ansible.builtin.include_role:
         name: "buluma.netdata"

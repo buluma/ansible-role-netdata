@@ -1,10 +1,10 @@
 ---
 - name: Install | defining auto update CLI option.
-  set_fact:
+  ansible.builtin.set_fact:
     auto_update_cli_option: "{{ netdata_auto_updates['enabled']|ternary('--auto-update', '') }}"
 
 - name: Install | cloning {{ netdata_git_repo }} to {{ netdata_source_dir }}
-  git:
+  ansible.builtin.git:
     repo: "{{ netdata_git_repo }}"
     dest: "{{ netdata_source_dir }}"
     depth: 1

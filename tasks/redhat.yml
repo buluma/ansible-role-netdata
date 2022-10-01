@@ -1,6 +1,6 @@
 ---
 - name: Redhat | Install git
-  yum:
+  ansible.builtin.yum:
     name: git
     state: present
 
@@ -10,7 +10,7 @@
   when: netdata_epel_setup
 
 - name: Redhat | Install EPEL repo.
-  yum:
+  ansible.builtin.yum:
     name: "{{ netdata_epel_repo_url }}"
     state: present
   register: result
@@ -19,7 +19,7 @@
     - not epel_repofile_result.stat.exists
 
 - name: Redhat | Import EPEL GPG key.
-  rpm_key:
+  ansible.builtin.rpm_key:
     key: "{{ netdata_epel_repo_gpg_key_url }}"
     state: present
   when:
@@ -27,7 +27,7 @@
     - not epel_repofile_result.stat.exists
 
 - name: Redhat | install okay repo
-  yum:
+  ansible.builtin.yum:
     name: http://repo.okay.com.mx/centos/6/x86_64/release/okay-release-1-3.el6.noarch.rpm
     state: present
   when: netdata_centos6_install_okay
