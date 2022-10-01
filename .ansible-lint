@@ -14,3 +14,6 @@ exclude_paths:
 
 skip_list:
   - jinja
+
+warn_list:  # or 'skip_list' to silence them completely
+  - fqcn-builtins  # Use FQCN for builtin actions.
