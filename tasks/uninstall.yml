@@ -14,7 +14,7 @@
   become: true
 
 - name: Uninstall | Uninstalling Netdata # noqa 301
-  command: "{{ netdata_uninstaller }} --force"
+  ansible.builtin.command: "{{ netdata_uninstaller }} --force"
   args:
     chdir: "{{ netdata_source_dir }}"
   become: true

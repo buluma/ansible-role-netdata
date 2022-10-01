@@ -1,6 +1,6 @@
 ---
 - name: Update | Updating Netdata ({{ netdata_updater }}) From {{ netdata_source_dir }}
-  command: "{{ netdata_updater }}"
+  ansible.builtin.command: "{{ netdata_updater }}"
   args:
     chdir: "{{ netdata_source_dir }}"
   become: true
@@ -8,7 +8,7 @@
   when: not netdata_update_force|bool
 
 - name: Update | Force Updating Netdata ({{ netdata_updater }}) From {{ netdata_source_dir }}
-  command: "{{ netdata_updater }} -f"
+  ansible.builtin.command: "{{ netdata_updater }} -f"
   args:
     chdir: "{{ netdata_source_dir }}"
   become: true
