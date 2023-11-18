@@ -1,14 +1,15 @@
-# [netdata](#netdata)
+# [Ansible role netdata](#netdata)
 
 Install and configure netdata.
 
-|GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
-|------|------|-------|---------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-netdata/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-netdata/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-netdata/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-netdata)|[![quality](https://img.shields.io/ansible/quality/)](https://galaxy.ansible.com/buluma/netdata)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/buluma/netdata)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-netdata.svg)](https://github.com/buluma/ansible-role-netdata/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-netdata.svg)](https://github.com/buluma/ansible-role-netdata/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-netdata.svg)](https://github.com/buluma/ansible-role-netdata/pulls/)|
+|GitHub|GitLab|Downloads|Version|Issues|Pull Requests|
+|------|------|-------|-------|------|-------------|
+|[![github](https://github.com/buluma/ansible-role-netdata/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-netdata/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-netdata/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-netdata)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/buluma/netdata)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-netdata.svg)](https://github.com/buluma/ansible-role-netdata/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-netdata.svg)](https://github.com/buluma/ansible-role-netdata/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-netdata.svg)](https://github.com/buluma/ansible-role-netdata/pulls/)|
 
 ## [Example Playbook](#example-playbook)
 
-This example is taken from `molecule/default/converge.yml` and is tested on each push, pull request and release.
+This example is taken from [`molecule/default/converge.yml`](https://github.com/buluma/ansible-role-netdata/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
+
 ```yaml
 ---
 - name: Converge
@@ -18,35 +19,38 @@ This example is taken from `molecule/default/converge.yml` and is tested on each
     netdata_git_version_tag: v1.35.0
   tasks:
     - name: "Include buluma.netdata"
-      include_role:
+      ansible.builtin.include_role:
         name: "buluma.netdata"
 ```
 
-The machine needs to be prepared. In CI this is done using `molecule/default/prepare.yml`:
+The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-netdata/blob/master/molecule/default/prepare.yml):
+
 ```yaml
 ---
 - name: Prepare
   hosts: all
   tasks:
     - name: Update Apt Cache and install cron
-      apt:
+      ansible.builtin.apt:
         name: cron
         update_cache: true
       become: true
       when: ansible_os_family == "Debian"
 
     - name: Install cron as requisite
-      package:
+      ansible.builtin.package:
         name: cronie
         state: present
       become: true
       when: ansible_os_family == "RedHat"
 ```
 
+Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
 
 ## [Role Variables](#role-variables)
 
-The default values for the variables are set in `defaults/main.yml`:
+The default values for the variables are set in [`defaults/main.yml`](https://github.com/buluma/ansible-role-netdata/blob/master/defaults/main.yml):
+
 ```yaml
 ---
 # defaults file for netdata
@@ -264,7 +268,7 @@ netdata_errors_to_trigger_flood_protection: 200
 
 ## [Requirements](#requirements)
 
-- pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-netdata/blob/main/requirements.txt).
+- pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-netdata/blob/master/requirements.txt).
 
 
 ## [Context](#context)
@@ -281,18 +285,16 @@ This role has been tested on these [container images](https://hub.docker.com/u/b
 
 |container|tags|
 |---------|----|
-|fedora|all|
-|debian|all|
-|ubuntu|all|
-|opensuse|all|
+|[Fedora](https://hub.docker.com/repository/docker/buluma/fedora/general)|all|
+|[Debian](https://hub.docker.com/repository/docker/buluma/debian/general)|all|
+|[Ubuntu](https://hub.docker.com/repository/docker/buluma/ubuntu/general)|all|
+|[opensuse](https://hub.docker.com/repository/docker/buluma/opensuse/general)|all|
 
 The minimum version of Ansible required is 2.1, tests have been done to:
 
 - The previous version.
 - The current version.
 - The development version.
-
-
 
 If you find issues, please register them in [GitHub](https://github.com/buluma/ansible-role-netdata/issues)
 
@@ -302,8 +304,14 @@ If you find issues, please register them in [GitHub](https://github.com/buluma/a
 
 ## [License](#license)
 
-Apache-2.0
+[Apache-2.0](https://github.com/buluma/ansible-role-netdata/blob/master/LICENSE).
 
 ## [Author Information](#author-information)
 
 [buluma](https://buluma.github.io/)
+
+Please consider [sponsoring me](https://github.com/sponsors/buluma).
+
+### [Special Thanks](#special-thanks)
+
+Template inspired by [Robert de Bock](https://github.com/robertdebock)

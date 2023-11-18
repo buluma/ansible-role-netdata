@@ -5,4 +5,4 @@
 repository:
   description: Install and configure netdata.
   homepage: https://buluma.github.io/
-  topics: netdata, ansible, molecule, tox, playbook, hacktoberfest
+  topics: netdata, ansible, molecule, tox, playbook
