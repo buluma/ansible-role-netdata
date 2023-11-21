@@ -26,8 +26,6 @@ molecule:
         tag: "focal"
       - image: "docker-ubuntu-systemd"
         tag: "bionic"
-      - image: "docker-ubuntu-systemd"
-        tag: "lunar"
       - image: "docker-opensuse-systemd"
         tag: "latest"
 
