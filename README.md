@@ -1,10 +1,10 @@
-# [Ansible role netdata](#netdata)
+# Ansible role [netdata](https://galaxy.ansible.com/ui/standalone/roles/buluma/netdata/documentation)
 
 Install and configure netdata.
 
-|GitHub|Version|Issues|Pull Requests|
-|------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-netdata/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-netdata/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-netdata.svg)](https://github.com/buluma/ansible-role-netdata/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-netdata.svg)](https://github.com/buluma/ansible-role-netdata/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-netdata.svg)](https://github.com/buluma/ansible-role-netdata/pulls/)|
+|GitHub|Version|Issues|Pull Requests|Downloads|
+|------|-------|------|-------------|---------|
+|[![github](https://github.com/buluma/ansible-role-netdata/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-netdata/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-netdata.svg)](https://github.com/buluma/ansible-role-netdata/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-netdata.svg)](https://github.com/buluma/ansible-role-netdata/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-netdata.svg)](https://github.com/buluma/ansible-role-netdata/pulls/)|[![Ansible Role](https://img.shields.io/ansible/role/d/buluma/netdata)](https://galaxy.ansible.com/ui/standalone/roles/buluma/netdata/documentation)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -304,13 +304,11 @@ If you find issues, please register them in [GitHub](https://github.com/buluma/a
 
 ## [License](#license)
 
-[Apache-2.0](https://github.com/buluma/ansible-role-netdata/blob/master/LICENSE).
+[Apache-2.0](https://github.com/buluma/ansible-role-netdata/blob/master/LICENSE)
 
 ## [Author Information](#author-information)
 
-[buluma](https://buluma.github.io/)
+[Shadow Walker](https://buluma.github.io/)
 
-
-### [Special Thanks](#special-thanks)
 
 Template inspired by [Robert de Bock](https://github.com/robertdebock)
