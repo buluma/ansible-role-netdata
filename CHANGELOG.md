@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/buluma/ansible-role-netdata/tree/HEAD)
+
+[Full Changelog](https://github.com/buluma/ansible-role-netdata/compare/v0.1.0...HEAD)
+
+**Closed issues:**
+
+- Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#6](https://github.com/buluma/ansible-role-netdata/issues/6)
+
 ## [v0.1.0](https://github.com/buluma/ansible-role-netdata/tree/v0.1.0) (2023-12-24)
 
 [Full Changelog](https://github.com/buluma/ansible-role-netdata/compare/dd25249106968fd8a43373fce7278ac25c65a1a9...v0.1.0)
