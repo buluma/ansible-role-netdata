@@ -6,6 +6,7 @@
   become: true
   notify: Restart netdata
   when: not netdata_update_force|bool
+  changed_when: false
 
 - name: update | Force Updating Netdata ({{ netdata_updater }}) From {{ netdata_source_dir }}
   ansible.builtin.command: "{{ netdata_updater }} -f"
@@ -13,3 +14,4 @@
     chdir: "{{ netdata_source_dir }}"
   become: true
   when: netdata_update_force
+  changed_when: false
