@@ -46,11 +46,7 @@ jobs:
           - image: "fedora-systemd"
             tag: "38"
           - image: "fedora-systemd"
-            tag: "latest"
-          - image: "fedora-systemd"
             tag: "rawhide"
-          - image: "debian-systemd"
-            tag: "latest"
           - image: "debian-systemd"
             tag: "bullseye"
           - image: "docker-ubuntu-systemd"
@@ -59,8 +55,6 @@ jobs:
             tag: "focal"
           - image: "docker-ubuntu-systemd"
             tag: "bionic"
-          - image: "docker-opensuse-systemd"
-            tag: "latest"
     steps:
       - name: Checkout Role
         uses: actions/checkout@v4
