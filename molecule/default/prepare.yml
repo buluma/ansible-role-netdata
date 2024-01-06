@@ -1,6 +1,11 @@
 ---
 - name: Prepare
   hosts: all
+
+  roles:
+    - role: buluma.bootstrap
+    - role: buluma.git
+
   tasks:
     - name: Update Apt Cache and install cron
       ansible.builtin.apt:
