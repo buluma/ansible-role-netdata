@@ -1,26 +1,42 @@
 ---
 # tasks file for ansible-netdata
 
-- include_tasks: set_facts.yml
+- name: Run set_facts
+  ansible.builtin.import_tasks:
+    file: set_facts.yml
 
-- include: debian.yml
+- name: Run debian
+  ansible.builtin.import_tasks:
+    file: debian.yml
   when: ansible_os_family == "Debian"
 
-- include: redhat.yml
+- name: Run redhat
+  ansible.builtin.import_tasks:
+    file: redhat.yml
   when: ansible_os_family == "RedHat"
 
-- include: install.yml
+- name: Run install
+  ansible.builtin.import_tasks:
+    file: install.yml
 
-- include: config.yml
+- name: Run config
+  ansible.builtin.import_tasks:
+    file: config.yml
   when: netdata_config
 
-- include: update.yml
+- name: Run update
+  ansible.builtin.import_tasks:
+    file: update.yml
   when: netdata_update or netdata_update_force
 
-- include: auto_updates.yml
+- name: Run auto_updates
+  ansible.builtin.import_tasks:
+    file: auto_updates.yml
   when: netdata_auto_updates['enabled']
 
-- include: uninstall.yml
+- name: Run uninstall
+  ansible.builtin.import_tasks:
+    file: uninstall.yml
   when: netdata_uninstall
   tags:
     - netdata_uninstall
