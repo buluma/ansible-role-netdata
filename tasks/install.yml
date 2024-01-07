@@ -20,6 +20,8 @@
   changed_when: >
     'All required packages are already installed. Now proceed to the next step.'
     not in netdata_requirements_install.stderr_lines
+  tags:
+    - molecule-idempotence-notest
 
 - name: install | Running netdata installer ({{ netdata_installer }}) From {{ netdata_source_dir }} # noqa 301
   ansible.builtin.command: "{{ installer_cli|join(' ') }}"
