@@ -29,6 +29,14 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 ---
 - name: Prepare
   hosts: all
+  gather_facts: no
+  become: yes
+  serial: 30%
+
+  roles:
+    - role: buluma.bootstrap
+    - role: buluma.git
+
   tasks:
     - name: Update Apt Cache and install cron
       ansible.builtin.apt:
@@ -84,7 +92,7 @@ netdata_config_file: /etc/netdata/netdata.conf
 netdata_git_repo: https://github.com/netdata/netdata.git
 
 # Defines the latest version tag to clone for installation
-netdata_git_version_tag: v1.35.0
+netdata_git_version_tag: v1.44.0
 
 # Defines whether Netdata health is enabled
 netdata_health_enabled: true
@@ -270,6 +278,14 @@ netdata_errors_to_trigger_flood_protection: 200
 
 - pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-netdata/blob/master/requirements.txt).
 
+## [State of used roles](#state-of-used-roles)
+
+The following roles are used to prepare a system. You can prepare your system in another way.
+
+| Requirement | GitHub | Version |
+|-------------|--------|--------|
+|[buluma.bootstrap](https://galaxy.ansible.com/buluma/bootstrap)|[![Ansible Molecule](https://github.com/buluma/ansible-role-bootstrap/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-bootstrap/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-bootstrap.svg)](https://github.com/shadowwalker/ansible-role-bootstrap)|
+|[buluma.git](https://galaxy.ansible.com/buluma/git)|[![Ansible Molecule](https://github.com/buluma/ansible-role-git/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-git/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-git.svg)](https://github.com/shadowwalker/ansible-role-git)|
 
 ## [Context](#context)
 
@@ -290,7 +306,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/b
 |[Ubuntu](https://hub.docker.com/repository/docker/buluma/ubuntu/general)|all|
 |[opensuse](https://hub.docker.com/repository/docker/buluma/opensuse/general)|all|
 
-The minimum version of Ansible required is 2.1, tests have been done to:
+The minimum version of Ansible required is 2.12, tests have been done to:
 
 - The previous version.
 - The current version.
