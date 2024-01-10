@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/buluma/ansible-role-netdata/tree/HEAD)
+
+[Full Changelog](https://github.com/buluma/ansible-role-netdata/compare/v0.2.0...HEAD)
+
+**Merged pull requests:**
+
+- Bump actions/checkout from 3 to 4 [\#8](https://github.com/buluma/ansible-role-netdata/pull/8) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.2.0](https://github.com/buluma/ansible-role-netdata/tree/v0.2.0) (2024-01-07)
 
 [Full Changelog](https://github.com/buluma/ansible-role-netdata/compare/v0.1.0...v0.2.0)
