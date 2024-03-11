@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump release-drafter/release-drafter from 5 to 6 [\#14](https://github.com/buluma/ansible-role-netdata/pull/14) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump release-drafter/release-drafter from 5 to 6 [\#13](https://github.com/buluma/ansible-role-netdata/pull/13) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.3.0](https://github.com/buluma/ansible-role-netdata/tree/v0.3.0) (2024-01-20)
