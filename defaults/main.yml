@@ -138,7 +138,7 @@ netdata_stream_proxy: false
 
 # Defines client ssl configuration
 # netdata_client_ssl_options:
-#   ssl skip certificate verification: "yes"
+#   ssl skip certificate verification: "true"
 #   CAfile: /etc/ssl/certs/ca-certificates.crt
 netdata_client_ssl_options: {}
 
@@ -174,7 +174,7 @@ netdata_configure_archive: false
 # Defines Netdata backend for long term datastorage
 # https://github.com/firehol/netdata/wiki/netdata-backends
 # Defines if the Netdata backend is enabled
-netdata_archive_enabled: "yes"
+netdata_archive_enabled: "true"
 
 # Defines the backend type as one of
 # graphite | opentsdb | json
