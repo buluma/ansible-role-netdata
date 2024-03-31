@@ -29,8 +29,8 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 ---
 - name: Prepare
   hosts: all
-  gather_facts: no
-  become: yes
+  gather_facts: false
+  become: true
   serial: 30%
 
   roles:
@@ -200,7 +200,7 @@ netdata_stream_proxy: false
 
 # Defines client ssl configuration
 # netdata_client_ssl_options:
-#   ssl skip certificate verification: "yes"
+#   ssl skip certificate verification: "true"
 #   CAfile: /etc/ssl/certs/ca-certificates.crt
 netdata_client_ssl_options: {}
 
@@ -236,7 +236,7 @@ netdata_configure_archive: false
 # Defines Netdata backend for long term datastorage
 # https://github.com/firehol/netdata/wiki/netdata-backends
 # Defines if the Netdata backend is enabled
-netdata_archive_enabled: "yes"
+netdata_archive_enabled: "true"
 
 # Defines the backend type as one of
 # graphite | opentsdb | json
@@ -303,7 +303,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/b
 |---------|----|
 |[Fedora](https://hub.docker.com/r/buluma/fedora)|all|
 |[Debian](https://hub.docker.com/r/buluma/debian)|bullseye|
-|[Ubuntu](https://hub.docker.com/r/buluma/ubuntu)|all|
+|[Ubuntu](https://hub.docker.com/r/buluma/ubuntu)|focal, bionic, jammy|
 
 The minimum version of Ansible required is 2.12, tests have been done to:
 

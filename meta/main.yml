@@ -16,7 +16,9 @@ galaxy_info:
         - bullseye
     - name: Ubuntu
       versions:
-        - all
+        - focal
+        - bionic
+        - jammy
 
   galaxy_tags:
     - netdata
