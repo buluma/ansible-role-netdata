@@ -89,10 +89,10 @@ netdata_config: true
 netdata_config_file: /etc/netdata/netdata.conf
 
 # Defines the Git repo to pull down for installs
-netdata_git_repo: https://github.com/netdata/netdata.git
+netdata_git_repo: "https://github.com/netdata/netdata.git"
 
 # Defines the latest version tag to clone for installation
-netdata_git_version_tag: v1.44.0
+netdata_git_version_tag: "v1.44.0"
 
 # Defines whether Netdata health is enabled
 netdata_health_enabled: true
@@ -175,7 +175,7 @@ netdata_registry_enabled: false
 
 # https://registry.my-netdata.io
 # https://github.com/firehol/netdata/wiki/mynetdata-menu-item
-netdata_registry_to_announce: https://registry.my-netdata.io
+netdata_registry_to_announce: "https://registry.my-netdata.io"
 
 # Defines directory to store install source from Git repo
 netdata_source_dir: /usr/local/src/netdata
