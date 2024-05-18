@@ -47,10 +47,6 @@ jobs:
       matrix:
         config:
           - image: "docker-molecule-images"
-            tag: "37"
-          - image: "docker-molecule-images"
-            tag: "38"
-          - image: "docker-molecule-images"
             tag: "39"
           - image: "docker-molecule-images"
             tag: "40"
