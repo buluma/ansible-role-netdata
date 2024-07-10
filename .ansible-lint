@@ -12,11 +12,5 @@ exclude_paths:
   - .github
   - requirements.yml
 
-skip_list:
-  - yaml[truthy]
-  - name[template]
-  - yaml[comments]
-  - no-free-form
-
 enable_list:
   - name[prefix]
