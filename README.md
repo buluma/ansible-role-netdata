@@ -109,7 +109,6 @@ netdata_alarm_config_file: /etc/netdata/health_alarm_notify.conf
 #   https_proxy: http://localhost:3128
 #   SLACK_WEBHOOK_URL: https://hooks.slack.com/...
 netdata_alarm_notify_configs: {}
-
 # Define custom_sender function in health_alarm_notify.conf
 # only the body of the function should be in there
 # Exemple: netdata_custom_sender_function: "curl -X POST url"
@@ -203,7 +202,6 @@ netdata_stream_proxy: false
 #   ssl skip certificate verification: "true"
 #   CAfile: /etc/ssl/certs/ca-certificates.crt
 netdata_client_ssl_options: {}
-
 # Defines if Netdata should be uninstalled
 # Caution: This does not prompt for uninstall as the original script
 # was intended.
