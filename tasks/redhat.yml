@@ -6,8 +6,7 @@
 
 - name: redhat | Check if EPEL repo is already configured.
   ansible.builtin.stat:
-    path: "{{"
-    cmd: netdata_epel_repofile_path }}
+    path: "{{ netdata_epel_repofile_path }}"
   register: epel_repofile_result
   when: netdata_epel_setup
 

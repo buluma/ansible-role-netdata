@@ -13,7 +13,7 @@
     replace: 'rm "'
   become: true
 
-- name: uninstall | Uninstalling Netdata # noqa 301
+- name: uninstall | Uninstalling Netdata # noqa no-changed-when
   ansible.builtin.command: "{{ netdata_uninstaller }} --force"
   args:
     chdir: "{{ netdata_source_dir }}"
