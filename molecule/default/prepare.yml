@@ -1,25 +1,25 @@
 ---
-- name: Prepare
-  hosts: all
-  gather_facts: false
-  become: true
-  serial: 30%
+  - name: Prepare
+    hosts: all
+    gather_facts: false
+    become: true
+    serial: 30%
 
-  roles:
-    - role: buluma.bootstrap
-    - role: buluma.git
+    roles:
+      - role: buluma.bootstrap
+      - role: buluma.git
 
-  tasks:
-    - name: Update Apt Cache and install cron
-      ansible.builtin.apt:
-        name: cron
-        update_cache: true
-      become: true
-      when: ansible_os_family == "Debian"
+    tasks:
+      - name: Update Apt Cache and install cron
+        ansible.builtin.apt:
+          name: cron
+          update_cache: true
+        become: true
+        when: ansible_os_family == "Debian"
 
-    - name: Install cron as requisite
-      ansible.builtin.package:
-        name: cronie
-        state: present
-      become: true
-      when: ansible_os_family == "RedHat"
+      - name: Install cron as requisite
+        ansible.builtin.package:
+          name: cronie
+          state: present
+        become: true
+        when: ansible_os_family == "RedHat"

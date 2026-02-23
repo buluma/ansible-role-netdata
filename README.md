@@ -12,45 +12,45 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
 ```yaml
 ---
-- name: Converge
-  hosts: all
-  vars:
-    netdata_epel_setup: "{{ ansible_hostname == 'centos7' }}"
-    netdata_git_version_tag: v1.35.0
-  tasks:
-    - name: "Include buluma.netdata"
-      ansible.builtin.include_role:
-        name: "buluma.netdata"
+  - name: Converge
+    hosts: all
+    vars:
+      netdata_epel_setup: "{{ ansible_hostname == 'centos7' }}"
+      netdata_git_version_tag: v1.35.0
+    tasks:
+      - name: "Include buluma.netdata"
+        ansible.builtin.include_role:
+          name: "buluma.netdata"
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-netdata/blob/master/molecule/default/prepare.yml):
 
 ```yaml
 ---
-- name: Prepare
-  hosts: all
-  gather_facts: false
-  become: true
-  serial: 30%
+  - name: Prepare
+    hosts: all
+    gather_facts: false
+    become: true
+    serial: 30%
 
-  roles:
-    - role: buluma.bootstrap
-    - role: buluma.git
+    roles:
+      - role: buluma.bootstrap
+      - role: buluma.git
 
-  tasks:
-    - name: Update Apt Cache and install cron
-      ansible.builtin.apt:
-        name: cron
-        update_cache: true
-      become: true
-      when: ansible_os_family == "Debian"
+    tasks:
+      - name: Update Apt Cache and install cron
+        ansible.builtin.apt:
+          name: cron
+          update_cache: true
+        become: true
+        when: ansible_os_family == "Debian"
 
-    - name: Install cron as requisite
-      ansible.builtin.package:
-        name: cronie
-        state: present
-      become: true
-      when: ansible_os_family == "RedHat"
+      - name: Install cron as requisite
+        ansible.builtin.package:
+          name: cronie
+          state: present
+        become: true
+        when: ansible_os_family == "RedHat"
 ```
 
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
@@ -163,8 +163,10 @@ netdata_web_mode: multi-threaded
 netdata_default_port: 19999
 
 netdata_epel_setup: false
-netdata_epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
-netdata_epel_repo_gpg_key_url: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
+netdata_epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{
+  ansible_distribution_major_version }}.noarch.rpm"
+netdata_epel_repo_gpg_key_url: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{
+  ansible_distribution_major_version }}"
 netdata_epel_repofile_path: "/etc/yum.repos.d/epel.repo"
 netdata_centos6_install_okay: false
 
