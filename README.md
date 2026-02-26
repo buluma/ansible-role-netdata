@@ -80,7 +80,7 @@ netdata_auto_updates:
 # The IP address and port to listen to. This is a space separated list of
 # IPv4 or IPv6 address and ports. The default will bind to all IP addresses
 netdata_bind_to:
-- "*"
+  - "*"
 
 # Defines if Netdata should be configured
 netdata_config: true
@@ -137,8 +137,8 @@ netdata_requirements_installer: packaging/installer/install-required-packages.sh
 
 # Defines Netdata requirements installer options (if we want morre complete requirements)
 netdata_requirements_installer_options:
-- "--non-interactive"
-- netdata
+  - "--non-interactive"
+  - netdata
 
 # When set to save netdata will save its round robin database on exit and
 # load it on startup. When set to map the cache files will be updated in
@@ -163,10 +163,8 @@ netdata_web_mode: multi-threaded
 netdata_default_port: 19999
 
 netdata_epel_setup: false
-netdata_epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{
-  ansible_distribution_major_version }}.noarch.rpm"
-netdata_epel_repo_gpg_key_url: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{
-  ansible_distribution_major_version }}"
+netdata_epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+netdata_epel_repo_gpg_key_url: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
 netdata_epel_repofile_path: "/etc/yum.repos.d/epel.repo"
 netdata_centos6_install_okay: false
 
@@ -244,7 +242,7 @@ netdata_archive_type: "opentsdb"
 
 # Defines the host(s) and ports netdata should send data to
 netdata_archive_destination:
-- localhost
+  - localhost
   # - "{{ vip }}:5252"
 
 # Defines how to send the archive data as one of
