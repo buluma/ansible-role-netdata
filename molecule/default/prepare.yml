@@ -6,20 +6,20 @@
   serial: 30%
 
   roles:
-  - role: buluma.bootstrap
-  - role: buluma.git
+    - role: buluma.bootstrap
+    - role: buluma.git
 
   tasks:
-  - name: Update Apt Cache and install cron
-    ansible.builtin.apt:
-      name: cron
-      update_cache: true
-    become: true
-    when: ansible_os_family == "Debian"
+    - name: Update Apt Cache and install cron
+      ansible.builtin.apt:
+        name: cron
+        update_cache: true
+      become: true
+      when: ansible_os_family == "Debian"
 
-  - name: Install cron as requisite
-    ansible.builtin.package:
-      name: cronie
-      state: present
-    become: true
-    when: ansible_os_family == "RedHat"
+    - name: Install cron as requisite
+      ansible.builtin.package:
+        name: cronie
+        state: present
+      become: true
+      when: ansible_os_family == "RedHat"
