@@ -11,7 +11,7 @@
     state: present
   become: true
   when: >
-    (ansible_distribution == "debian" and
-    ansible_distribution_version|int < 10) or
-    (ansible_distribution == "Ubuntu" and
-    ansible_distribution_version < "18.04")
+    (ansible_facts.distribution == "debian" and
+    ansible_facts.distribution_version|int < 10) or
+    (ansible_facts.distribution == "Ubuntu" and
+    ansible_facts.distribution_version < "18.04")

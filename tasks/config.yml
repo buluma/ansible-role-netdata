@@ -42,7 +42,7 @@
     - Reload systemd netdata
     - Restart netdata
   become: true
-  when: ansible_service_mgr == "systemd"
+  when: ansible_facts.service_mgr == "systemd"
 
 - name: config | Configuring Netdata Service (upstart|sysvinit) - Debian
   ansible.builtin.template:
@@ -55,9 +55,9 @@
     - Restart netdata
   become: true
   when: >
-    (ansible_service_mgr == "upstart"
-    or ansible_service_mgr == "sysvinit") and
-    ansible_os_family == "Debian"
+    (ansible_facts.service_mgr == "upstart"
+    or ansible_facts.service_mgr == "sysvinit") and
+    ansible_facts.os_family == "Debian"
 
 - name: config | Configuring Netdata Service (upstart|sysvinit) - RedHat
   ansible.builtin.template:
@@ -70,6 +70,6 @@
     - Restart netdata
   become: true
   when: >
-    (ansible_service_mgr == "upstart"
-    or ansible_service_mgr == "sysvinit") and
-    ansible_os_family == "RedHat"
+    (ansible_facts.service_mgr == "upstart"
+    or ansible_facts.service_mgr == "sysvinit") and
+    ansible_facts.os_family == "RedHat"
