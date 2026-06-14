@@ -62,7 +62,7 @@ netdata_default_repeat_critical: never
 netdata_default_repeat_warning: never
 
 # The host name displayed in netdata
-netdata_hostname: "{{ ansible_facts.hostname }}"
+netdata_hostname: "{{ ansible_facts['hostname'] }}"
 # The number of entries the netdata daemon will by default keep in memory
 # for each chart dimension.
 netdata_history: 3996
@@ -101,8 +101,8 @@ netdata_web_mode: multi-threaded
 netdata_default_port: 19999
 
 netdata_epel_setup: false
-netdata_epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_facts.distribution_major_version }}.noarch.rpm"
-netdata_epel_repo_gpg_key_url: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_facts.distribution_major_version }}"
+netdata_epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm"
+netdata_epel_repo_gpg_key_url: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_facts['distribution_major_version'] }}"
 netdata_epel_repofile_path: "/etc/yum.repos.d/epel.repo"
 netdata_centos6_install_okay: false
 

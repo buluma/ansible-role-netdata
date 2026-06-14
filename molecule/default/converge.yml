@@ -2,7 +2,7 @@
 - name: Converge
   hosts: all
   vars:
-    netdata_epel_setup: "{{ ansible_facts.hostname == 'centos7' }}"
+    netdata_epel_setup: "{{ ansible_facts['hostname'] == 'centos7' }}"
     netdata_git_version_tag: v1.35.0
   tasks:
     - name: "Include buluma.netdata"
