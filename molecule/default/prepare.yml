@@ -1,25 +1,16 @@
 ---
 - name: Prepare
   hosts: all
-  gather_facts: false
   become: true
-  serial: 30%
+  gather_facts: false
+
+  pre_tasks:
+    - name: Install sudo if missing
+      ansible.builtin.raw: "{{ ansible_pkg_mgr | default('dnf') }} install -y sudo}"
+      become: false
+      changed_when: false
+      failed_when: false
 
   roles:
     - role: buluma.bootstrap
     - role: buluma.git
-
-  tasks:
-    - name: Update Apt Cache and install cron
-      ansible.builtin.apt:
-        name: cron
-        update_cache: true
-      become: true
-      when: ansible_facts['os_family'] == "Debian"
-
-    - name: Install cron as requisite
-      ansible.builtin.package:
-        name: cronie
-        state: present
-      become: true
-      when: ansible_facts['os_family'] == "RedHat"
