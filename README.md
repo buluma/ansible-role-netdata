@@ -15,7 +15,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 - name: Converge
   hosts: all
   vars:
-    netdata_epel_setup: "{{ ansible_hostname == 'centos7' }}"
+    netdata_epel_setup: "{{ ansible_facts['hostname'] == 'centos7' }}"
     netdata_git_version_tag: v1.35.0
   tasks:
     - name: "Include buluma.netdata"
@@ -29,28 +29,19 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 ---
 - name: Prepare
   hosts: all
-  gather_facts: false
   become: true
-  serial: 30%
+  gather_facts: false
+
+  pre_tasks:
+    - name: Install sudo if missing
+      ansible.builtin.raw: "{{ ansible_pkg_mgr | default('dnf') }} install -y sudo}"
+      become: false
+      changed_when: false
+      failed_when: false
 
   roles:
     - role: buluma.bootstrap
     - role: buluma.git
-
-  tasks:
-    - name: Update Apt Cache and install cron
-      ansible.builtin.apt:
-        name: cron
-        update_cache: true
-      become: true
-      when: ansible_os_family == "Debian"
-
-    - name: Install cron as requisite
-      ansible.builtin.package:
-        name: cronie
-        state: present
-      become: true
-      when: ansible_os_family == "RedHat"
 ```
 
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
@@ -124,7 +115,7 @@ netdata_default_repeat_critical: never
 netdata_default_repeat_warning: never
 
 # The host name displayed in netdata
-netdata_hostname: "{{ ansible_hostname }}"
+netdata_hostname: "{{ ansible_facts['hostname'] }}"
 # The number of entries the netdata daemon will by default keep in memory
 # for each chart dimension.
 netdata_history: 3996
@@ -163,8 +154,8 @@ netdata_web_mode: multi-threaded
 netdata_default_port: 19999
 
 netdata_epel_setup: false
-netdata_epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
-netdata_epel_repo_gpg_key_url: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
+netdata_epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm"
+netdata_epel_repo_gpg_key_url: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_facts['distribution_major_version'] }}"
 netdata_epel_repofile_path: "/etc/yum.repos.d/epel.repo"
 netdata_centos6_install_okay: false
 
@@ -295,13 +286,14 @@ Here is an overview of related roles:
 
 ## [Compatibility](#compatibility)
 
-This role has been tested on these [container images](https://hub.docker.com/u/robertdebock):
+This role has been tested on these [container images](https://hub.docker.com/u/buluma):
 
 |container|tags|
 |---------|----|
-|[Fedora](https://hub.docker.com/r/robertdebock/fedora)|all|
-|[Debian](https://hub.docker.com/r/robertdebock/debian)|all|
-|[Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)|all|
+|[EL](https://hub.docker.com/r/buluma/docker-molecule-images)|all|
+|[Debian](https://hub.docker.com/r/buluma/docker-molecule-images)|all|
+|[Fedora](https://hub.docker.com/r/buluma/docker-molecule-images)|all|
+|[Ubuntu](https://hub.docker.com/r/buluma/docker-molecule-images)|all|
 
 The minimum version of Ansible required is 2.12, tests have been done on:
 
@@ -319,6 +311,3 @@ If you find issues, please register them on [GitHub](https://github.com/buluma/a
 
 [buluma](https://buluma.github.io/)
 
-### Get Help
-- Report issues: https://github.com/buluma/ansible-role-netdata/issues/new
-- See docs: https://docs.ansible.com/collection/gallery/ansible-role-netdata
