@@ -11,9 +11,12 @@
     version: "{{ netdata_git_version_tag }}"
   become: true
 
-- name: install | Ensure GNU autotools are installed (RedHat family).
+- name: install | Ensure the build toolchain is installed (RedHat family).
   ansible.builtin.package:
     name:
+      - gcc
+      - gcc-c++
+      - make
       - autoconf
       - automake
       - autoconf-archive
@@ -24,10 +27,12 @@
   # distro releases newer than the pinned netdata_git_version_tag knows
   # about (e.g. Fedora 43): its require_cmd/suitable_package detection
   # falls through without erroring or installing anything, so
-  # netdata-installer.sh later aborts with "Could not find a usable
-  # version of GNU autotools". Installing them ourselves sidesteps that
-  # detection gap regardless of which distro releases netdata's script
-  # does or doesn't recognize.
+  # netdata-installer.sh later aborts -- first on "Could not find a
+  # usable version of GNU autotools", and once autotools were installed
+  # separately, on "no acceptable C compiler found in $PATH" /
+  # "make: command not found" instead. Installing the whole toolchain
+  # ourselves sidesteps that detection gap regardless of which distro
+  # releases netdata's script does or doesn't recognize.
 
 - name: install | Use netdata dependencies installation.
   ansible.builtin.command: "{{ netdata_requirements_installer }} {{ netdata_requirements_installer_options | join(' ') }}"
@@ -51,5 +56,11 @@
   args:
     chdir: "{{ netdata_source_dir }}"
     creates: /usr/sbin/netdata
+  environment:
+    CFLAGS: "-O2 -pipe -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion"
+    # GCC 14+ (e.g. Ubuntu 26.04 ships 15.2) turned these into hard errors
+    # by default; netdata_git_version_tag's C source predates that and
+    # fails to compile ("initialization of 'void (*)(void *)' from
+    # incompatible pointer type") without them demoted back to warnings.
   become: true
   notify: Restart netdata
