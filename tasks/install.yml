@@ -9,9 +9,16 @@
     dest: "{{ netdata_source_dir }}"
     depth: 1
     version: "{{ netdata_git_version_tag }}"
+    recursive: true
   become: true
+  # Without this, netdata's own bundled dependencies (mqtt_websockets,
+  # h2o, etc.) are registered but never checked out -- the build fails
+  # much later with things like "No rule to make target
+  # 'mqtt_websockets/c-rbuf/src/ringbuffer.c'" and "fatal error:
+  # h2o/memory.h: No such file or directory", which read like missing
+  # packages but are actually missing submodules.
 
-- name: install | Ensure the build toolchain is installed (RedHat family).
+- name: install | Ensure the full build dependency set is installed (RedHat family).
   ansible.builtin.package:
     name:
       - gcc
@@ -20,19 +27,33 @@
       - autoconf
       - automake
       - autoconf-archive
+      - cmake
+      - pkgconfig
+      - bison
+      - flex
+      - zlib-devel
+      - libuuid-devel
+      - libmnl-devel
+      - json-c-devel
+      - libyaml-devel
+      - systemd-devel
+      - libuv-devel
+      - lz4-devel
+      - openssl-devel
+      - elfutils-libelf-devel
     state: present
   become: true
   when: ansible_facts['os_family'] == "RedHat"
-  # netdata's own install-required-packages.sh silently skips these on
-  # distro releases newer than the pinned netdata_git_version_tag knows
-  # about (e.g. Fedora 43): its require_cmd/suitable_package detection
-  # falls through without erroring or installing anything, so
-  # netdata-installer.sh later aborts -- first on "Could not find a
-  # usable version of GNU autotools", and once autotools were installed
-  # separately, on "no acceptable C compiler found in $PATH" /
-  # "make: command not found" instead. Installing the whole toolchain
-  # ourselves sidesteps that detection gap regardless of which distro
-  # releases netdata's script does or doesn't recognize.
+  # netdata's own install-required-packages.sh doesn't recognize distro
+  # releases newer than netdata_git_version_tag's era (e.g. Fedora 43/44):
+  # its distro/tree detection falls through silently for each dependency
+  # in turn rather than erroring, so packages just never get installed.
+  # Patching this one missing package at a time as netdata-installer.sh
+  # died further and further into the build (autotools, then a C
+  # compiler, then libelf, then libuv...) turned into whack-a-mole, so
+  # this installs the whole list install-required-packages.sh would have
+  # installed for RHEL/CentOS/Fedora had it recognized the release,
+  # sourced directly from its pkg_* tables at netdata_git_version_tag.
 
 - name: install | Use netdata dependencies installation.
   ansible.builtin.command: "{{ netdata_requirements_installer }} {{ netdata_requirements_installer_options | join(' ') }}"
