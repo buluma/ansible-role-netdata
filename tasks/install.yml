@@ -11,6 +11,24 @@
     version: "{{ netdata_git_version_tag }}"
   become: true
 
+- name: install | Ensure GNU autotools are installed (RedHat family).
+  ansible.builtin.package:
+    name:
+      - autoconf
+      - automake
+      - autoconf-archive
+    state: present
+  become: true
+  when: ansible_facts['os_family'] == "RedHat"
+  # netdata's own install-required-packages.sh silently skips these on
+  # distro releases newer than the pinned netdata_git_version_tag knows
+  # about (e.g. Fedora 43): its require_cmd/suitable_package detection
+  # falls through without erroring or installing anything, so
+  # netdata-installer.sh later aborts with "Could not find a usable
+  # version of GNU autotools". Installing them ourselves sidesteps that
+  # detection gap regardless of which distro releases netdata's script
+  # does or doesn't recognize.
+
 - name: install | Use netdata dependencies installation.
   ansible.builtin.command: "{{ netdata_requirements_installer }} {{ netdata_requirements_installer_options | join(' ') }}"
   args:
