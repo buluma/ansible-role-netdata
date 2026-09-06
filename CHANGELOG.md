@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/buluma/ansible-role-netdata/tree/HEAD)
+
+[Full Changelog](https://github.com/buluma/ansible-role-netdata/compare/v26.6.1...HEAD)
+
+**Merged pull requests:**
+
+- drop Debian 11 from CI matrix [\#27](https://github.com/buluma/ansible-role-netdata/pull/27) ([buluma](https://github.com/buluma))
+
 ## [v26.6.1](https://github.com/buluma/ansible-role-netdata/tree/v26.6.1) (2026-07-26)
 
 [Full Changelog](https://github.com/buluma/ansible-role-netdata/compare/v26.6.0...v26.6.1)
