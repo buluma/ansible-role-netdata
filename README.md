@@ -16,7 +16,6 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
   hosts: all
   vars:
     netdata_epel_setup: "{{ ansible_facts['hostname'] == 'centos7' }}"
-    netdata_git_version_tag: v1.35.0
   tasks:
     - name: "Include buluma.netdata"
       ansible.builtin.include_role:
@@ -313,9 +312,8 @@ This role has been tested on these [container images](https://hub.docker.com/u/b
 |container|tags|
 |---------|----|
 |[EL](https://hub.docker.com/r/buluma/docker-molecule-images)|10, 9|
-|[Debian](https://hub.docker.com/r/buluma/docker-molecule-images)|all|
-|[Fedora](https://hub.docker.com/r/buluma/docker-molecule-images)|44, 43|
-|[Ubuntu](https://hub.docker.com/r/buluma/docker-molecule-images)|all|
+|[Debian](https://hub.docker.com/r/buluma/docker-molecule-images)|bookworm, trixie|
+|[Ubuntu](https://hub.docker.com/r/buluma/docker-molecule-images)|24.04, 22.04|
 
 The minimum version of Ansible required is 2.12, tests have been done on:
 

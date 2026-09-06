@@ -8,7 +8,9 @@ platforms:
       - "9"
   - name: Debian
     versions:
-      - all
+      # Excludes 11 (bullseye): EOL. No role code depends on it.
+      - "bookworm"
+      - "trixie"
   # Fedora excluded entirely: 45 ships Python 3.15.0b3, whose dataclasses
   # module dropped _is_type, breaking ansible-core's AnsiballZ module
   # wrapper. 43/44 build netdata_git_version_tag (v1.44.0, ~mid-2024)
