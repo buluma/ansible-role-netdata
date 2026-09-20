@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/buluma/ansible-role-netdata/tree/HEAD)
+## [v26.9.0](https://github.com/buluma/ansible-role-netdata/tree/v26.9.0) (2026-09-06)
 
-[Full Changelog](https://github.com/buluma/ansible-role-netdata/compare/v26.6.1...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-netdata/compare/v26.6.1...v26.9.0)
 
 **Merged pull requests:**
 
