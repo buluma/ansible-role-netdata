@@ -87,6 +87,7 @@
   async: 3600
   poll: 10
   environment:
+    TMPDIR: /var/tmp
     CFLAGS: "-O2 -pipe -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion"
     # GCC 14+ (e.g. Ubuntu 26.04 ships 15.2) turned these into hard errors
     # by default; netdata_git_version_tag's C source predates that and
