@@ -76,6 +76,7 @@
 - name: install | Running netdata installer from {{ netdata_installer ~ ' @ ' ~ netdata_source_dir }}
   ansible.builtin.command: "{{ installer_cli | join(' ') }}"
   vars:
+    ansible_remote_tmp: /var/tmp
     installer_cli:
       - "{{ netdata_installer }}"
       - "{{ auto_update_cli_option }}"
