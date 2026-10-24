@@ -83,6 +83,8 @@
   args:
     chdir: "{{ netdata_source_dir }}"
     creates: /usr/sbin/netdata
+  async: 3600
+  poll: 10
   environment:
     CFLAGS: "-O2 -pipe -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion"
     # GCC 14+ (e.g. Ubuntu 26.04 ships 15.2) turned these into hard errors
