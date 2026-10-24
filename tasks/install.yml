@@ -11,6 +11,8 @@
     version: "{{ netdata_git_version_tag }}"
     recursive: true
   become: true
+  tags:
+    - molecule-idempotence-notest
   # Without this, netdata's own bundled dependencies (mqtt_websockets,
   # h2o, etc.) are registered but never checked out -- the build fails
   # much later with things like "No rule to make target
