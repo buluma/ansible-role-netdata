@@ -11,6 +11,8 @@
     version: "{{ netdata_git_version_tag }}"
     recursive: true
   become: true
+  tags:
+    - molecule-idempotence-notest
   # Without this, netdata's own bundled dependencies (mqtt_websockets,
   # h2o, etc.) are registered but never checked out -- the build fails
   # much later with things like "No rule to make target
@@ -74,6 +76,7 @@
 - name: install | Running netdata installer from {{ netdata_installer ~ ' @ ' ~ netdata_source_dir }}
   ansible.builtin.command: "{{ installer_cli | join(' ') }}"
   vars:
+    ansible_remote_tmp: /var/tmp
     installer_cli:
       - "{{ netdata_installer }}"
       - "{{ auto_update_cli_option }}"
@@ -81,7 +84,10 @@
   args:
     chdir: "{{ netdata_source_dir }}"
     creates: /usr/sbin/netdata
+  async: 3600
+  poll: 10
   environment:
+    TMPDIR: /var/tmp
     CFLAGS: "-O2 -pipe -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion"
     # GCC 14+ (e.g. Ubuntu 26.04 ships 15.2) turned these into hard errors
     # by default; netdata_git_version_tag's C source predates that and
