@@ -1,5 +1,21 @@
 # Changelog
 
+## [Unreleased](https://github.com/buluma/ansible-role-netdata/tree/HEAD)
+
+[Full Changelog](https://github.com/buluma/ansible-role-netdata/compare/v26.10.9...HEAD)
+
+**Merged pull requests:**
+
+- ANS-17: Update netdata to 2.12.2 [\#29](https://github.com/buluma/ansible-role-netdata/pull/29) ([buluma](https://github.com/buluma))
+
+## [v26.10.9](https://github.com/buluma/ansible-role-netdata/tree/v26.10.9) (2026-10-04)
+
+[Full Changelog](https://github.com/buluma/ansible-role-netdata/compare/v26.9.0...v26.10.9)
+
+**Merged pull requests:**
+
+- Enable native Dependabot auto-merge with required CI [\#28](https://github.com/buluma/ansible-role-netdata/pull/28) ([buluma](https://github.com/buluma))
+
 ## [v26.9.0](https://github.com/buluma/ansible-role-netdata/tree/v26.9.0) (2026-09-06)
 
 [Full Changelog](https://github.com/buluma/ansible-role-netdata/compare/v26.6.1...v26.9.0)
@@ -15,11 +31,6 @@
 ## [v26.6.0](https://github.com/buluma/ansible-role-netdata/tree/v26.6.0) (2026-06-14)
 
 [Full Changelog](https://github.com/buluma/ansible-role-netdata/compare/v24.3.31...v26.6.0)
-
-**Closed issues:**
-
-- Update action [\#5](https://github.com/buluma/ansible-role-netdata/issues/5)
-- rebuild action [\#4](https://github.com/buluma/ansible-role-netdata/issues/4)
 
 ## [v24.3.31](https://github.com/buluma/ansible-role-netdata/tree/v24.3.31) (2024-03-31)
 
@@ -43,10 +54,6 @@
 ## [v0.2.0](https://github.com/buluma/ansible-role-netdata/tree/v0.2.0) (2024-01-07)
 
 [Full Changelog](https://github.com/buluma/ansible-role-netdata/compare/v0.1.0...v0.2.0)
-
-**Closed issues:**
-
-- Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#6](https://github.com/buluma/ansible-role-netdata/issues/6)
 
 ## [v0.1.0](https://github.com/buluma/ansible-role-netdata/tree/v0.1.0) (2023-12-24)
 
