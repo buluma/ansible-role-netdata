@@ -6,6 +6,9 @@
 
 **Merged pull requests:**
 
+- ANS-79: Restore tested Netdata platforms [\#35](https://github.com/buluma/ansible-role-netdata/pull/35) ([buluma](https://github.com/buluma))
+- ANS-66: Use https for okay repo rpm and verify EPEL key fingerprint [\#33](https://github.com/buluma/ansible-role-netdata/pull/33) ([buluma](https://github.com/buluma))
+- Update CHANGELOG.md [\#32](https://github.com/buluma/ansible-role-netdata/pull/32) ([github-actions[bot]](https://github.com/apps/github-actions))
 - ANS-55: Update netdata to v2.13.0 [\#31](https://github.com/buluma/ansible-role-netdata/pull/31) ([buluma](https://github.com/buluma))
 - Update CHANGELOG.md [\#30](https://github.com/buluma/ansible-role-netdata/pull/30) ([github-actions[bot]](https://github.com/apps/github-actions))
 - ANS-17: Update netdata to 2.12.2 [\#29](https://github.com/buluma/ansible-role-netdata/pull/29) ([buluma](https://github.com/buluma))
