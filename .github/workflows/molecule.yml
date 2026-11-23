@@ -34,7 +34,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v7
       - name: ansible-lint
-        uses: ansible/ansible-lint@v26.6.0
+        uses: ansible/ansible-lint@v26.11.0
 
   molecule:
     needs:
@@ -44,12 +44,6 @@ jobs:
       fail-fast: false
       matrix:
         distro:
-          - image: "docker-molecule-images"
-            tag: "fedora43"
-          - image: "docker-molecule-images"
-            tag: "fedora44"
-          - image: "docker-molecule-images"
-            tag: "ubuntu2604"
           - image: "docker-molecule-images"
             tag: "rockylinux10"
           - image: "docker-molecule-images"
@@ -62,6 +56,12 @@ jobs:
             tag: "debian12"
           - image: "docker-molecule-images"
             tag: "debian13"
+          - image: "docker-molecule-images"
+            tag: "fedora44"
+          - image: "docker-molecule-images"
+            tag: "fedora43"
+          - image: "docker-molecule-images"
+            tag: "ubuntu2604"
           - image: "docker-molecule-images"
             tag: "ubuntu2404"
           - image: "docker-molecule-images"
@@ -94,7 +94,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip3 install ansible molecule molecule-plugins[docker] docker
+          pip3 install "ansible==15.0.0" "molecule==26.11.0" "molecule-plugins[docker]==26.11.0" "docker==7.2.0"
 
       - name: Test with molecule
         run: |
